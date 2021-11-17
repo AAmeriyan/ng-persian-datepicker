@@ -13,8 +13,8 @@
     class="datepicker-inner-container">
 
     <!-- Start: navigation -->
-    <div
-      class="content-container navigation-container">
+    <div *ngIf="NavType!=2"
+         class="content-container navigation-container">
       <div
         class="go-back dp-btn"
         (click)="navigate(false)">
@@ -31,7 +31,7 @@
       <div
         class="switch-view dp-btn"
         (click)="nextViewMode()">
-        <span>{{ viewDateTitle }}</span>
+        <span>{{ viewDateTitle |faNum  }}</span>
       </div>
       <div
         class="go-forward dp-btn"
@@ -48,7 +48,35 @@
       </div>
     </div>
     <!-- End: navigation -->
-
+    <!-- Start: second navigation -->
+    <div *ngIf="NavType==2"
+         class="content-container navigation-container">
+      <div
+        class="go-back dp-btn" style="text-align: right;font-size: 0.9rem"
+        (click)="navigate(false)">
+        <img style="position:absolute;right: 0;width: 18px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAACcUlEQVR4nO3bvWsUQRjH8Y+SKCbYRAW1kFSChagpFN8Qe9HGxi6IbygqiKJ/g4WN+A+oYCE2/gGKChYKFjZio6QRsTGYF6LRxGL3uPW8XO42uXsuyXxhYPZmnrnf82NnZ4+ZI5FIJBKlOIQL6C0Z34fLGArUUJoejGMWp0uOcSuPHwnUYHXJuLXoz+sbSo4xsMD4xdBQ2oAVQS/O4SVGZbfaUiqjeIGzsunSElvxtguSWKzyBlvqJbqqzmfr8Bq78+sRPMVkoU8vruX15/kXtMpR7MU07pSIn09DH05gW379DgcxNd/AN1Wde6D6oCnSX+hzo0XhFW7n8eMl45vR0I+HhX7XazvUewhWlpQPOIOJkgK7gQlZDh/z6/+Wy1oD1mN7Xr+Pn3MM/KvQ9qOkuLEFxjerYUqWC+xQc0fXPh0HCvWvDQadxknskU2TMtyVzeNnJeNb0fClUN+owV09qDpfhksK60aGVfMaLDas+BehZEC0gGiSAdEComn0I+EI1nRKSJvZ32zH4jK4XEtaBos0mgKX8KhTQtrMKdyr19DIgEl8b4uczjM5V8OKnwLJgGgB0SQDogVEkwyIFhBNMiBaQDTJgGgB0SQDogVEkwyIFhBNMiBaQDTJgGgB0SQDogVEkwyIFhBNMiBaQDS1BhRPhS2XnWGyg9UV/jkoWWvAN9VtpH3tVNRhKtvjE7IcG/JEto38Wwv76l3MAVkus3jcTMBQIWAMV7CpXerayCZcVf1TxTR2NRt8ETPiDzMsVpnB+WaTr3Acn7tA/ELLJxybK8l6x+WL9OAwdmKzpbNszsiO+r7HK/yJlZNIJBJdyl/awGGFNB6KbQAAAABJRU5ErkJggg=="/>
+   <span style="margin-top: 2px;margin-right: 22px;display: block"> {{Title}}</span>
+      </div>
+      <div
+        class="switch-view dp-btn">
+        <hr style="background-color: #dddddd;height: 1px;margin-top: 10px;border: none;">
+      </div>
+      <div
+        class="go-forward dp-btn border"
+        (click)="nextViewMode()">
+        <span class="spanstyle" >{{ viewDateTitle |faNum  }}</span>
+        <svg style="font-size: 10px"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 240.823 240.823"
+          xml:space="preserve">
+          <path
+            d="M183.189,111.816L74.892,3.555c-4.752-4.74-12.451-4.74-17.215,0c-4.752,4.74-4.752,12.439,0,17.179
+            l99.707,99.671l-99.695,99.671c-4.752,4.74-4.752,12.439,0,17.191c4.752,4.74,12.463,4.74,17.215,0l108.297-108.261
+            C187.881,124.315,187.881,116.495,183.189,111.816z"></path>
+        </svg>
+      </div>
+    </div>
+    <!-- End: navigation -->
     <!-- Start: year view mode -->
     <div
       *ngIf="viewModes[currentViewMode] === 'year'"
@@ -62,7 +90,7 @@
           [class.disabled]="year.isYearDisabled"
           (click)="yearClick(year)"
           *ngFor="let year of years">
-          <span>{{ year.value }}</span>
+          <span>{{ year.value |faNum }}</span>
         </div>
       </div>
     </div>
@@ -96,7 +124,7 @@
         <div
           class="day-col"
           *ngFor="let weekDay of weekDays">
-          <span>{{ weekDay }}</span>
+          <span style="font-size: 9px">{{ weekDay }}</span>
         </div>
       </div>
       <div
@@ -105,13 +133,14 @@
           *ngFor="let row of days">
           <div
             class="day-col dp-btn"
-            [class.other-month]="!day.isDayInCurrentMonth"
-            [class.today]="day.isDayOfTodayDate"
-            [class.selected]="day.isDayOfSelectedDate"
-            [class.disabled]="day.isDayDisabled"
             (click)="dayClick(day)"
             *ngFor="let day of row">
-            <span>{{ day.value }}</span>
+            <span class=" dp-btn" style="font-size: 18px;line-height: 39px;display: inline-block;width: 38px;height: 38px;border-radius: 50%"
+              [class.other-month]="!day.isDayInCurrentMonth "
+              [class.today]="day.isDayOfTodayDate"
+              [class.selected]="day.isDayOfSelectedDate"
+              [class.disabled]="day.isDayDisabled"
+            >{{ day.value |faNum  }}</span>
           </div>
         </ng-container>
       </div>
@@ -142,7 +171,7 @@
           </svg>
         </div>
         <div>
-          <span>{{ hourText }}</span>
+          <span>{{ hourText |faNum  }}</span>
         </div>
         <div
           (click)="decreaseHour()"
@@ -179,7 +208,7 @@
           </svg>
         </div>
         <div>
-          <span>{{ minuteText }}</span>
+          <span>{{ minuteText |faNum  }}</span>
         </div>
         <div
           (click)="decreaseMinute()"
@@ -216,7 +245,7 @@
           </svg>
         </div>
         <div>
-          <span>{{ secondText }}</span>
+          <span>{{ secondText |faNum }}</span>
         </div>
         <div
           (click)="decreaseSecond()"

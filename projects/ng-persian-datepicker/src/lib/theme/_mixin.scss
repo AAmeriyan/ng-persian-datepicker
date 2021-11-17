@@ -24,10 +24,10 @@
       background: $backgroundColor;
       color: $textColor;
       @if $boxShadowColor {
-        box-shadow: 0 5px 10px $boxShadowColor;
+        //box-shadow: 0 5px 10px $boxShadowColor;
       }
       @if $borderColor {
-        border: 1px solid $borderColor;
+        //border: 1px solid $borderColor;
       }
 
       .datepicker-inner-container {

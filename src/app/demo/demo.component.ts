@@ -27,7 +27,7 @@ export class DemoComponent implements OnInit {
       monthView: true
     },
     time: {
-      enable: true,
+      enable: false,
       showSecond: true,
       meridian: false
     }

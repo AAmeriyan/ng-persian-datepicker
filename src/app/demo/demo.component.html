@@ -238,10 +238,10 @@
       </div>
     </div>
     <div
-      class="col offset-l2 l4 offset-m3 m6 offset-s2 s8">
+      class="">
       <div
         class="input-field">
-        <input
+        <input hidden
           id="datepicker"
           type="text" #datepickerInput />
         <label
@@ -251,9 +251,11 @@
         class="datepicker-container">
         <ng-persian-datepicker
           [input]="datepickerInput"
+          [NavType]="2"
           [dateValue]="config.date.value"
           [dateOnSelect]="config.date.onSelect"
           [uiTheme]="config.ui.theme"
+          [Title]="'برنامه من'"
           [uiIsVisible]="config.ui.isVisible"
           [uiHideAfterSelectDate]="config.ui.hideAfterSelectDate"
           [uiHideOnOutsideClick]="config.ui.hideOnOutsideClick"

@@ -4,6 +4,7 @@ export interface DayModel {
   monthIndex: number;
   value: number;
   isDayInCurrentMonth: boolean;
+  isDayBeforeToday?: boolean;
   isDayOfTodayDate: boolean;
   isDayOfSelectedDate: boolean;
   isDayDisabled: boolean;

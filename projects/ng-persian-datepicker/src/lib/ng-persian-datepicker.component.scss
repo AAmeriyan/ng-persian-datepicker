@@ -31,22 +31,38 @@
         height: 24px;
         cursor: pointer;
       }
-
+      .go-forward{
+        width: 20%;
+      }
+      .go-back{
+        width: 25%;
+      }
+      .spanstyle{
+        display: inline-flex;
+        margin-top: 5px;
+        margin-left: 10px;
+        font-size: 0.6rem
+      }
       .go-forward, .go-back {
-        width: 15%;
+
+        margin: 0 2.5%;
         position: relative;
         svg {
-          width: 12px;
-          height: 12px;
+          width: 7px;
+          height: 7px;
+          transform: rotate(90deg);
           position: absolute;
-          top: calc(50% - 6px);
-          right: calc(50% - 6px);
+          top: 8px;
+          left: 5px;
         }
       }
-
+      .border{
+        border: 1px solid #dddddd;
+        border-radius: 15px;
+      }
       .switch-view {
-        width: 66%;
-        margin: 0 2%;
+        width: 45%;
+        margin: 0 0;
         font-weight: bold;
         span {
           vertical-align: sub;

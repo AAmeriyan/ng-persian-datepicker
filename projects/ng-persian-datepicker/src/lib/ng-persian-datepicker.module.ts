@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
-import { NgPersianDatepickerComponent } from './ng-persian-datepicker.component';
-import { CommonModule } from '@angular/common';
-import { MonthTextPipe } from './month-text.pipe';
+import {NgModule} from '@angular/core';
+import {NgPersianDatepickerComponent} from './ng-persian-datepicker.component';
+import {CommonModule} from '@angular/common';
+import {MonthTextPipe} from './month-text.pipe';
+import {FaNumPipe, NgxPersianModule} from 'ngx-persian';
 
 @NgModule({
   declarations: [
@@ -9,10 +10,14 @@ import { MonthTextPipe } from './month-text.pipe';
     MonthTextPipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgxPersianModule
   ],
+
   exports: [
     NgPersianDatepickerComponent
-  ]
+  ],
+  providers: [FaNumPipe],
 })
-export class NgPersianDatepickerModule {}
+export class NgPersianDatepickerModule {
+}
